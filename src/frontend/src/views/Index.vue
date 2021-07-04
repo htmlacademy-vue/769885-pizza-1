@@ -28,7 +28,7 @@
               <h2 class="title title--small sheet__title">Выберите тесто</h2>
               <div class="sheet__content dough">
                 <label
-                  v-for="d in dough"
+                  v-for="(d, idx) in dough"
                   :key="d.name"
                   class="dough__input"
                   :class="`dough__input--${d.type}`"
@@ -38,6 +38,7 @@
                     name="dough"
                     :value="d.type"
                     class="visually-hidden"
+                    :checked="idx === 0"
                   />
                   <b>{{ d.name }}</b>
                   <span>{{ d.description }}</span>
@@ -52,7 +53,7 @@
 
               <div class="sheet__content diameter">
                 <label
-                  v-for="size in sizes"
+                  v-for="(size, idx) in sizes"
                   :key="size.name"
                   class="diameter__input"
                   :class="`diameter__input--${size.type}`"
@@ -62,6 +63,7 @@
                     name="diameter"
                     :value="size.type"
                     class="visually-hidden"
+                    :checked="idx === 1"
                   />
                   <span>{{ size.name }}</span>
                 </label>
@@ -80,12 +82,17 @@
                   <p>Основной соус:</p>
 
                   <label
-                    v-for="s in sauces"
+                    v-for="(s, idx) in sauces"
                     :key="s.name"
                     class="radio ingridients__input"
                   >
-                    <input type="radio" name="sauce" :value="s.value" />
-                    <span>Томатный</span>
+                    <input
+                      type="radio"
+                      name="sauce"
+                      :value="s.value"
+                      :checked="idx === 0"
+                    />
+                    <span>{{ s.name }}</span>
                   </label>
                 </div>
 
@@ -179,7 +186,7 @@ import {
 } from "@/common/helpers";
 
 export default {
-  name: "PtzMain",
+  name: "PzzIndex",
   data() {
     return {
       dough: pizza.dough.map((item) => findDoungh(item)),

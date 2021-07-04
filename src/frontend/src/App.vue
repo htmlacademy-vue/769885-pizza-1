@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <ptz-main />
+    <pzz-index />
   </div>
 </template>
 
 <script>
-import PtzMain from "@/views/Index.vue";
+import PzzIndex from "@/views/Index.vue";
 
 export default {
   name: "App",
-  components: { PtzMain },
+  components: { PzzIndex },
 };
 </script>
 
