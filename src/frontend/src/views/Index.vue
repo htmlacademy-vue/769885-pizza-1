@@ -28,8 +28,8 @@
               <h2 class="title title--small sheet__title">Выберите тесто</h2>
               <div class="sheet__content dough">
                 <label
-                  v-for="(d, idx) in dough"
-                  :key="idx.name"
+                  v-for="d in dough"
+                  :key="d.name"
                   class="dough__input"
                   :class="`dough__input--${d.type}`"
                 >
@@ -38,7 +38,6 @@
                     name="dough"
                     :value="d.type"
                     class="visually-hidden"
-                    checked
                   />
                   <b>{{ d.name }}</b>
                   <span>{{ d.description }}</span>
@@ -53,9 +52,9 @@
 
               <div class="sheet__content diameter">
                 <label
-                  v-for="(size, idx) in sizes"
-                  :key="idx.name"
-                  class="diameter__input diameter__input--small"
+                  v-for="size in sizes"
+                  :key="size.name"
+                  class="diameter__input"
                   :class="`diameter__input--${size.type}`"
                 >
                   <input
@@ -63,7 +62,6 @@
                     name="diameter"
                     :value="size.type"
                     class="visually-hidden"
-                    checked
                   />
                   <span>{{ size.name }}</span>
                 </label>
@@ -82,11 +80,11 @@
                   <p>Основной соус:</p>
 
                   <label
-                    v-for="(s, idx) in sauces"
-                    :key="idx.name"
+                    v-for="s in sauces"
+                    :key="s.name"
                     class="radio ingridients__input"
                   >
-                    <input type="radio" name="sauce" :value="s.value" checked />
+                    <input type="radio" name="sauce" :value="s.value" />
                     <span>Томатный</span>
                   </label>
                 </div>
@@ -96,8 +94,8 @@
 
                   <ul class="ingridients__list">
                     <li
-                      v-for="(ingredient, idx) in ingredients"
-                      :key="idx.name"
+                      v-for="ingredient in ingredients"
+                      :key="ingredient.name"
                       class="ingridients__item"
                     >
                       <span
@@ -173,43 +171,22 @@
 
 <script>
 import pizza from "@/static/pizza";
-import { DOUNGH, INGREDIENTS, SAUCE, SIZE } from "../common/dictionary-type";
+import {
+  findDoungh,
+  findIngredient,
+  findSize,
+  findSouse,
+} from "@/common/helpers";
 
 export default {
   name: "PtzMain",
   data() {
     return {
-      dough: pizza.dough.map((item) => this.findDoungh(item)),
-      ingredients: pizza.ingredients.map((item) => this.findIngredient(item)),
-      sauces: pizza.sauces.map((item) => this.findSouse(item)),
-      sizes: pizza.sizes.map((item) => this.findSize(item)),
+      dough: pizza.dough.map((item) => findDoungh(item)),
+      ingredients: pizza.ingredients.map((item) => findIngredient(item)),
+      sauces: pizza.sauces.map((item) => findSouse(item)),
+      sizes: pizza.sizes.map((item) => findSize(item)),
     };
-  },
-  methods: {
-    findDoungh(item) {
-      return {
-        ...item,
-        type: DOUNGH.find(({ name }) => item.name === name)?.value,
-      };
-    },
-    findIngredient(item) {
-      return {
-        ...item,
-        type: INGREDIENTS.find(({ name }) => item.name === name)?.value,
-      };
-    },
-    findSouse(item) {
-      return {
-        ...item,
-        type: SAUCE.find(({ name }) => item.name === name)?.value,
-      };
-    },
-    findSize(item) {
-      return {
-        ...item,
-        type: SIZE[item.multiplier],
-      };
-    },
   },
 };
 </script>

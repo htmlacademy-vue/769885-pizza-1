@@ -1,11 +1,9 @@
 export const DOUNGH = [
   {
-    nameType: "dough",
     name: "Тонкое",
     value: "light",
   },
   {
-    nameType: "dough",
     name: "Толстое",
     value: "large",
   },
