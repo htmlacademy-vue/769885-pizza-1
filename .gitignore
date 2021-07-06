@@ -11,9 +11,9 @@ Thumbs.db
 *.log*
 node_modules/
 package-lock.json
+build/
 
 /dist
-/build
 
 # local env files
 .env.local
