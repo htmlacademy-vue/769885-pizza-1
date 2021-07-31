@@ -1,29 +1,38 @@
 <template>
-  <div class="">
-    <label
-      v-for="(val, index) in valueArray"
-      :key="val.name"
-      class="diameter__input"
-      :class="`diameter__input--${val.type}`"
-    >
-      <input
-        type="radio"
-        name="diameter"
-        :value="val.type"
-        class="visually-hidden"
-        :checked="index === 1"
-      />
-      <span>{{ val.name }}</span>
-    </label>
-  </div>
+  <label :class="`${type}__input ${type}__input--${value.type}`">
+    <input
+      type="radio"
+      :name="`${type}`"
+      :value="value.type"
+      class="visually-hidden"
+      :checked="idx === 0"
+      @change="$emit('change', $event.target.value)"
+    />
+    <b v-if="type === 'dough'">{{ value.name }}</b>
+    <span v-if="type === 'dough'">{{ value.description }}</span>
+    <pzz-selector-item v-else :value="value" />
+  </label>
 </template>
 
 <script>
+import PzzSelectorItem from "./SelectorItem";
+
 export default {
   name: "PzzRadioButton",
+  components: {
+    PzzSelectorItem,
+  },
   props: {
-    valueArray: {
-      type: Array,
+    value: {
+      type: Object,
+      required: true,
+    },
+    idx: {
+      type: Number,
+      required: true,
+    },
+    type: {
+      type: String,
       required: true,
     },
   },

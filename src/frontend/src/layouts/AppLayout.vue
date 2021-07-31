@@ -9,6 +9,7 @@
 <script>
 import PzzAppLayoutHeader from "./AppLayoutHeader";
 import PzzIndexHome from "../views/Index";
+
 export default {
   name: "PzzAppLayout",
   components: {

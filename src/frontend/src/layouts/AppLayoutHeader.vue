@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import PzzHeaderCard from "../modules/header/HeaderCard";
-import PzzHeaderUser from "../modules/header/HeaderUser";
+import PzzHeaderCard from "../modules/header/components/HeaderCard";
+import PzzHeaderUser from "../modules/header/components/HeaderUser";
 export default {
   name: "PzzAppLayoutHeader",
   components: {
