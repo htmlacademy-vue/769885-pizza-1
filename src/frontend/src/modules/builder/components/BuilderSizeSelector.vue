@@ -12,20 +12,23 @@
 </template>
 
 <script>
-import pizza from "../../../static/pizza.json";
-import { findSize } from "../../../common/helpers";
 import PzzRadioButton from "../../../common/components/RadioButton";
 import PzzItemContent from "../../../common/components/ItemContent";
 
 export default {
   name: "PzzBuilderSizeSelector",
+  props: {
+    sizes: {
+      type: Array,
+      default: () => [],
+    },
+  },
   components: {
     PzzItemContent,
     PzzRadioButton,
   },
   data() {
     return {
-      sizes: pizza.sizes.map((item) => findSize(item)),
       contentType: "diameter",
       contentTitle: "Выберите размер",
     };

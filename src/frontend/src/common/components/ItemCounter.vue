@@ -9,7 +9,7 @@
           type="button"
           class="counter__button counter__button--minus"
           :disabled="minusIngredientCounter"
-          @click="minusCounter('minus')"
+          @click="resultCounterIngredient('minus')"
         >
           <span class="visually-hidden">Меньше</span>
         </button>
@@ -24,7 +24,7 @@
           type="button"
           class="counter__button counter__button--plus"
           :disabled="plusIngredientCounter"
-          @click="plusCounter('plus')"
+          @click="resultCounterIngredient('plus')"
         >
           <span class="visually-hidden">Больше</span>
         </button>
@@ -58,18 +58,8 @@ export default {
     },
   },
   methods: {
-    minusCounter(setting) {
-      this.ingredientCounter--;
-      this.$emit("change", {
-        setting: setting,
-        type: this.ingredient.type,
-        name: this.ingredient.name,
-        counter: this.ingredientCounter,
-        price: this.ingredient.price,
-      });
-    },
-    plusCounter(setting) {
-      this.ingredientCounter++;
+    resultCounterIngredient(setting) {
+      setting === "minus" ? this.ingredientCounter-- : this.ingredientCounter++;
       this.$emit("change", {
         setting: setting,
         type: this.ingredient.type,

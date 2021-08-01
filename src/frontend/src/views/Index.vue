@@ -2,11 +2,13 @@
   <form action="#" method="post">
     <div class="content__wrapper">
       <h1 class="title title--big">Конструктор пиццы</h1>
-      <pzz-builder-dough-selector @selectDoug="selectDoug" />
-      <pzz-builder-size-selector @selectSize="selectSize" />
+      <pzz-builder-dough-selector @selectDoug="selectDoug" :dough="dough" />
+      <pzz-builder-size-selector @selectSize="selectSize" :sizes="size" />
       <pzz-builder-ingredients-selector
         @setIngredients="setIngredients"
         @selectSauce="selectSauce"
+        :sauces="sauce"
+        :ingredients="ingredients"
       />
       <pzz-builder-result-pizza
         :currentComponentPizza="currentComponentPizza"

@@ -25,7 +25,3 @@ export const findSize = (item) => {
     type: SIZE[item.multiplier],
   };
 };
-
-export const findPizzaItem = (item) => {
-  return `<div class="pizza__filling pizza__filling--${item}"></div>`;
-};

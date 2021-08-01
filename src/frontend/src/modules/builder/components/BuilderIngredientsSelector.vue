@@ -27,15 +27,22 @@
 </template>
 
 <script>
-import pizza from "../../../static/pizza.json";
-
-import { findIngredient, findSouse } from "../../../common/helpers";
 import PzzItemCounter from "../../../common/components/ItemCounter";
 import PzzItemContent from "../../../common/components/ItemContent";
 import PzzRadioButton from "../../../common/components/RadioButton";
 
 export default {
   name: "PzzBuilderIngredientsSelector",
+  props: {
+    ingredients: {
+      type: Array,
+      default: () => [],
+    },
+    sauces: {
+      type: Array,
+      default: () => [],
+    },
+  },
   components: {
     PzzRadioButton,
     PzzItemContent,
@@ -43,8 +50,6 @@ export default {
   },
   data() {
     return {
-      ingredients: pizza.ingredients.map((item) => findIngredient(item)),
-      sauces: pizza.sauces.map((item) => findSouse(item)),
       contentType: "ingridients",
       contentTitle: "Выберите ингридиенты",
     };

@@ -5,6 +5,7 @@
       :key="d.name"
       :idx="index"
       :value="d"
+      :name="d.name"
       :type="contentType"
       @change="$emit('selectDoug', $event)"
     />
@@ -12,19 +13,23 @@
 </template>
 
 <script>
-import pizza from "../../../static/pizza.json";
-import { findDoungh } from "../../../common/helpers";
 import PzzItemContent from "../../../common/components/ItemContent";
 import PzzRadioButton from "../../../common/components/RadioButton";
+
 export default {
   name: "PzzBuilderDoughSelector",
+  props: {
+    dough: {
+      type: Array,
+      default: () => [],
+    },
+  },
   components: {
     PzzRadioButton,
     PzzItemContent,
   },
   data() {
     return {
-      dough: pizza.dough.map((item) => findDoungh(item)),
       contentType: "dough",
       contentTitle: "Выберите тесто",
     };

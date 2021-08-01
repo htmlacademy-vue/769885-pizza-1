@@ -8,8 +8,8 @@
       :checked="idx === 0"
       @change="$emit('change', $event.target.value)"
     />
-    <b v-if="type === 'dough'">{{ value.name }}</b>
-    <span v-if="type === 'dough'">{{ value.description }}</span>
+    <b v-if="value.description">{{ value.name }}</b>
+    <span v-if="value.description">{{ value.description }}</span>
     <pzz-selector-item v-else :value="value" />
   </label>
 </template>
