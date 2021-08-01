@@ -1,4 +1,5 @@
-import { DOUNGH, INGREDIENTS, SAUCE, SIZE } from "./dictionary-type";
+import { DOUNGH, INGREDIENTS, SAUCE } from "./constants";
+import { SIZE } from "./enum/diameterSize";
 
 export const findDoungh = (item) => {
   return {

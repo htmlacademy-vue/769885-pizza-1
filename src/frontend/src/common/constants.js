@@ -12,10 +12,12 @@ export const DOUNGH = [
 export const SAUCE = [
   {
     name: "Томатный",
+    description: "Из твердых сортов пшеницы",
     value: "tomato",
   },
   {
     name: "Сливочный",
+    description: "Из твердых сортов пшеницы",
     value: "creamy",
   },
 ];
@@ -83,8 +85,6 @@ export const INGREDIENTS = [
   },
 ];
 
-export const SIZE = {
-  1: "small",
-  2: "normal",
-  3: "big",
-};
+export const MOVE = "move";
+
+export const DATA_TRANSFER_PAYLOAD = "payload";
